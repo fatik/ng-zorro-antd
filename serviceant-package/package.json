@@ -1,0 +1,41 @@
+{
+  "name": "@serviceant/ng-theme",
+  "version": "1.0.0",
+  "description": "ServiceAnt theme for NG-ZORRO Ant Design based on ServicePath/Noodled design system",
+  "main": "components/public-api.ts",
+  "types": "components/public-api.ts",
+  "files": [
+    "styles/",
+    "components/",
+    "integration/",
+    "demo/",
+    "README.md",
+    "INTEGRATION_GUIDE.md"
+  ],
+  "keywords": [
+    "angular",
+    "ng-zorro",
+    "ant-design",
+    "theme",
+    "serviceant",
+    "servicepath",
+    "design-system"
+  ],
+  "author": "ServicePath Team",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^18.0.0 || ^19.0.0",
+    "@angular/core": "^18.0.0 || ^19.0.0",
+    "@angular/forms": "^18.0.0 || ^19.0.0",
+    "ng-zorro-antd": "^18.0.0 || ^19.0.0",
+    "less": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/serviceant-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/serviceant-theme/issues"
+  },
+  "homepage": "https://github.com/your-org/serviceant-theme#readme"
+}

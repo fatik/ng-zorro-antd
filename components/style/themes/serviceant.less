@@ -1,0 +1,150 @@
+// ServiceAnt Theme - ServicePath Design System
+// Based on sp-protos tailwind.config.js
+// Similar structure to aliyun.less for compatibility
+
+// Typography
+@font-size-sm: 12px;
+@font-size-base: 12px;
+@font-size-icon: 12px;
+
+// Primary Color - ServicePath Green
+@primary-color: #74ba54;
+
+// Border Radius - 4px for consistency (sp-protos border-radius-sm)
+@border-radius-base: 4px;
+@border-radius-sm: 4px;
+@border-radius-lg: 8px;
+
+// Text Colors (from sp-protos)
+@text-color: #2b3036;
+@text-color-secondary: #767d84;
+@heading-color: #2b3036;
+
+// Background Colors (from sp-protos)
+@background-color-base: #f8f9fa;
+@body-background: #FAFBFC;
+@component-background: #ffffff;
+
+// Status Colors (from sp-protos)
+@success-color: #10b981;
+@error-color: #ef4444;
+@warning-color: #f59e0b;
+@info-color: @primary-color;
+@danger-color: @error-color;
+@processing-color: @primary-color;
+
+// Border Colors (from sp-protos)
+@border-color-base: #e5e8ec;
+@border-color-split: #e5e8ec;
+
+// Outline for focus states
+@outline-width: 2px;
+@outline-color: @primary-color;
+
+// Input Heights
+@input-height-lg: 40px;
+@input-height-base: 32px;
+@input-height-sm: 24px;
+
+// Input Borders
+@input-hover-border-color: @primary-color;
+@input-border-color: #cdd1d5;
+
+// Form
+@form-item-margin-bottom: 24px;
+
+// Button
+@btn-default-bg: #ffffff;
+@btn-default-border: #cdd1d5;
+@btn-danger-color: #fff;
+@btn-danger-bg: @error-color;
+@btn-danger-border: @error-color;
+@btn-font-weight: 600;
+
+// Switch
+@switch-color: @primary-color;
+
+// Table
+@table-header-bg: #f8f9fa;
+@table-row-hover-bg: #f8f9fa;
+@table-padding-vertical: 12px;
+@table-border-color: @border-color-base;
+
+// Badge
+@badge-color: @error-color;
+
+// Breadcrumb
+@breadcrumb-base-color: @text-color-secondary;
+@breadcrumb-last-item-color: @primary-color;
+@breadcrumb-link-color: @text-color-secondary;
+@breadcrumb-link-color-hover: @primary-color;
+
+// Slider
+@slider-rail-background-color: @background-color-base;
+@slider-rail-background-color-hover: #e1e1e1;
+@slider-track-background-color: @primary-color;
+@slider-track-background-color-hover: @primary-color;
+@slider-handle-border-width: 2px;
+@slider-handle-color: @primary-color;
+@slider-handle-color-hover: @primary-color;
+@slider-handle-color-focus: @primary-color;
+@slider-handle-color-tooltip-open: @primary-color;
+@slider-handle-color-focus-shadow: fade(@primary-color, 20%);
+@slider-handle-shadow: 0 0 0 2px fade(@primary-color, 20%);
+
+// Alert
+@alert-success-border-color: fade(@success-color, 30%);
+@alert-success-bg-color: fade(@success-color, 10%);
+@alert-info-border-color: fade(@primary-color, 30%);
+@alert-info-bg-color: fade(@primary-color, 10%);
+@alert-error-border-color: fade(@error-color, 30%);
+@alert-error-bg-color: fade(@error-color, 10%);
+@alert-warning-border-color: fade(@warning-color, 30%);
+@alert-warning-bg-color: fade(@warning-color, 10%);
+
+// Radio Button
+@radio-button-bg: transparent;
+@radio-button-checked-bg: transparent;
+
+// Progress
+@progress-radius: @border-radius-base;
+
+// Tabs
+@tabs-card-gutter: 0;
+@tabs-card-tab-active-border-top: 2px solid @primary-color;
+@tabs-highlight-color: @primary-color;
+@tabs-hover-color: @primary-color;
+@tabs-active-color: @primary-color;
+
+// Layout
+@layout-body-background: #FAFBFC;
+
+// Checkbox
+@checkbox-border-radius: @border-radius-base;
+@checkbox-color: @primary-color;
+
+// Select
+@select-item-selected-bg: fade(@primary-color, 10%);
+@select-item-active-bg: fade(@primary-color, 5%);
+@select-border-color: #cdd1d5;
+
+// Menu
+@menu-item-active-bg: fade(@primary-color, 10%);
+@menu-highlight-color: @primary-color;
+
+// Card
+@card-radius: @border-radius-base;
+
+// Modal
+@modal-border-radius: @border-radius-lg;
+
+// Tag
+@tag-default-bg: @background-color-base;
+
+// Pagination
+@pagination-item-bg-active: @component-background;
+
+// Patch for line height
+@line-height-base: 1.5715;
+@input-padding-vertical-lg: 8px;
+@input-padding-vertical-base: 6px;

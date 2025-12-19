@@ -12,6 +12,7 @@ import path from 'path';
 import { aliyunPaletteLess } from '../build/aliyun-vars';
 import { compactPaletteLess } from '../build/compact-vars';
 import { darkPaletteLess } from '../build/dark-vars';
+import { serviceantPaletteLess } from '../build/serviceant-vars';
 
 const themePath = path.join(__dirname, '../../site/styles.less');
 const colorPalettePath = path.join(__dirname, '../../components/style/color/colorPalette.less');
@@ -37,6 +38,7 @@ export default function generateAllTheme(): Promise<void[]> {
   return Promise.all([
     generateTheme(compactPaletteLess, 'compact.css'),
     generateTheme(darkPaletteLess, 'dark.css'),
-    generateTheme(aliyunPaletteLess, 'aliyun.css')
+    generateTheme(aliyunPaletteLess, 'aliyun.css'),
+    generateTheme(serviceantPaletteLess, 'serviceant.css')
   ]);
 }
