@@ -1,0 +1,40 @@
+/**
+ * Main Styles Entry Point
+ *
+ * This file should be referenced in angular.json as:
+ * "styles": ["src/styles.less"]
+ */
+
+// 1. Import ServiceAnt theme FIRST
+@import 'styles/themes/serviceant.less';
+
+// 2. Import NG-ZORRO SECOND
+@import 'ng-zorro-antd/ng-zorro-antd.less';
+
+// 3. Import Google Fonts (if not in index.html)
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+// 4. Your custom application styles
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #FAFBFC; // ServiceAnt page background
+}
+
+// Optional: Global utility classes
+.text-primary {
+  color: #2b3036;
+}
+
+.text-secondary {
+  color: #767d84;
+}
+
+.surface-canvas {
+  background-color: #ffffff;
+}
+
+.surface-bg {
+  background-color: #FAFBFC;
+}

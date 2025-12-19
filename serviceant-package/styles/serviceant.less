@@ -1,0 +1,777 @@
+/**
+ * ServiceAnt Theme
+ *
+ * A custom NG-ZORRO theme based on ServicePath/Noodled design system.
+ * This theme can be imported into any Angular project using NG-ZORRO.
+ *
+ * Integration:
+ * 1. Import this file in your styles.less:
+ *    @import 'path/to/serviceant.less';
+ *
+ * 2. Or use angular.json stylePreprocessorOptions:
+ *    "stylePreprocessorOptions": {
+ *      "includePaths": ["path/to/themes"]
+ *    }
+ *    Then: @import 'serviceant.less';
+ *
+ * 3. Or override via angular.json:
+ *    Add to architect.build.options.styles:
+ *    "styles": [
+ *      "path/to/serviceant.less",
+ *      "src/styles.less"
+ *    ]
+ */
+
+// Import base theme first (provides all default variables)
+@import '../themes/default';
+
+// =============================================================================
+// PRIMARY BRAND COLORS
+// =============================================================================
+
+// Primary green from Noodled (#74ba54)
+@primary-color: #74ba54;
+@primary-color-hover: #8fc975; // Lighter on hover
+@primary-color-active: #588f32; // Darker on active (text-accent-brand)
+@primary-color-outline: fade(@primary-color, 20%);
+
+// Derived primary colors
+@primary-1: color(~`colorPalette('@{primary-color}', 1) `); // lightest
+@primary-2: color(~`colorPalette('@{primary-color}', 2) `);
+@primary-3: color(~`colorPalette('@{primary-color}', 3) `);
+@primary-4: color(~`colorPalette('@{primary-color}', 4) `);
+@primary-5: color(~`colorPalette('@{primary-color}', 5) `);
+@primary-6: @primary-color; // base
+@primary-7: color(~`colorPalette('@{primary-color}', 7) `);
+@primary-8: color(~`colorPalette('@{primary-color}', 8) `);
+@primary-9: color(~`colorPalette('@{primary-color}', 9) `);
+@primary-10: color(~`colorPalette('@{primary-color}', 10) `); // darkest
+
+// Info color (same as primary in ServicePath)
+@info-color: @primary-color;
+
+// Keep standard status colors but can customize if needed
+@success-color: #52c41a; // NG-ZORRO default green (can change to #10b981 for Tailwind match)
+@warning-color: #faad14; // NG-ZORRO default orange (can change to #f59e0b)
+@error-color: #f5222d;   // NG-ZORRO default red (can change to #ef4444)
+
+// Disabled state
+@disabled-color: fade(#000, 25%);
+@disabled-bg: #f5f5f5;
+@disabled-color-dark: fade(#fff, 35%);
+
+// =============================================================================
+// TEXT COLORS (from Noodled)
+// =============================================================================
+
+@text-color: #2b3036;              // text-primary
+@text-color-secondary: #767d84;    // text-secondary
+@heading-color: #2b3036;           // Same as primary text
+@text-color-dark: fade(#fff, 85%);
+@text-color-secondary-dark: fade(#fff, 65%);
+
+// Label & placeholder
+@label-color: @text-color;
+@label-required-color: @error-color;
+
+// =============================================================================
+// BACKGROUND COLORS (from Noodled)
+// =============================================================================
+
+@body-background: #FAFBFC;         // surface-bg
+@component-background: #ffffff;    // surface-canvas (cards, inputs)
+@background-color-light: #f8f9fa;  // surface-overlay (hover states)
+@background-color-base: #f5f5f5;
+
+// Popover/Modal backgrounds
+@popover-background: @component-background;
+@modal-content-bg: @component-background;
+
+// =============================================================================
+// BORDER COLORS (from Noodled)
+// =============================================================================
+
+@border-color-base: #e5e8ec;       // border-light
+@border-color-split: #e5e8ec;      // Same as base for consistency
+@border-color-inverse: @component-background;
+
+// Input borders
+@input-border-color: #cdd1d5;      // border-input-normal
+@input-hover-border-color: @primary-color;
+@input-disabled-bg: @background-color-light;
+
+// =============================================================================
+// TYPOGRAPHY (from Noodled - Open Sans)
+// =============================================================================
+
+// Font family
+@font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+@code-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+
+// Font sizes - ServicePath uses smaller scale (12px base vs NG-ZORRO 14px)
+@font-size-base: 12px;             // text-xs in Noodled (was 14px in NG-ZORRO)
+@font-size-lg: 14px;               // text-sm in Noodled (was 16px)
+@font-size-sm: 12px;               // Keep at 12px
+
+// Heading sizes (adjusted for smaller base)
+@heading-1-size: ceil(@font-size-base * 2.33); // ~28px (was 38px)
+@heading-2-size: ceil(@font-size-base * 2);    // ~24px (was 30px)
+@heading-3-size: ceil(@font-size-base * 1.67); // ~20px (text-xl)
+@heading-4-size: ceil(@font-size-base * 1.33); // ~16px (text-base)
+@heading-5-size: ceil(@font-size-base * 1.17); // ~14px (text-sm)
+
+// Line height
+@line-height-base: 1.5715;
+
+// =============================================================================
+// SPACING (4px grid system from Noodled)
+// =============================================================================
+
+// Base spacing unit (4px vs NG-ZORRO 8px)
+@padding-lg: 24px;   // 6 in Tailwind scale
+@padding-md: 16px;   // 4 in Tailwind scale
+@padding-sm: 12px;   // 3 in Tailwind scale
+@padding-xs: 8px;    // 2 in Tailwind scale
+@padding-xss: 4px;   // 1 in Tailwind scale
+
+@margin-lg: 24px;
+@margin-md: 16px;
+@margin-sm: 12px;
+@margin-xs: 8px;
+@margin-xss: 4px;
+
+// Control heights (more compact)
+@height-base: 32px;  // Keep standard for now
+@height-lg: 40px;
+@height-sm: 24px;
+
+// Control padding
+@control-padding-horizontal: @padding-xs;
+@control-padding-horizontal-sm: @padding-xs;
+
+// =============================================================================
+// BORDER RADIUS (from Noodled)
+// =============================================================================
+
+@border-radius-base: 4px;  // border-sm in Noodled
+@border-radius-sm: 4px;    // Same as base
+@border-radius-lg: 8px;    // border-md in Noodled
+
+// =============================================================================
+// SHADOWS (Subtle shadows for depth)
+// =============================================================================
+
+@shadow-color: rgba(0, 0, 0, 0.08);
+@shadow-color-inverse: @component-background;
+@box-shadow-base: 0 2px 8px @shadow-color;
+@shadow-1-up: 0 -2px 8px @shadow-color;
+@shadow-1-down: 0 2px 8px @shadow-color;
+@shadow-1-left: -2px 0 8px @shadow-color;
+@shadow-1-right: 2px 0 8px @shadow-color;
+@shadow-2: 0 4px 16px @shadow-color;
+
+// =============================================================================
+// BUTTON CUSTOMIZATION
+// =============================================================================
+
+@btn-font-weight: 600;
+@btn-border-radius-base: @border-radius-base;
+@btn-border-radius-sm: @border-radius-base;
+@btn-border-width: @border-width-base;
+@btn-border-style: @border-style-base;
+@btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+@btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+@btn-text-shadow: none;
+
+// Primary button
+@btn-primary-color: #fff;
+@btn-primary-bg: @primary-color; // #74ba54
+
+// Default button
+@btn-default-color: @text-color;
+@btn-default-bg: @component-background;
+@btn-default-border: @border-color-base;
+
+// Danger button
+@btn-danger-color: #fff;
+@btn-danger-bg: @error-color;
+@btn-danger-border: @error-color;
+
+// Disabled state
+@btn-disable-color: @disabled-color;
+@btn-disable-bg: @disabled-bg;
+@btn-disable-border: @border-color-base;
+
+// Button sizes (more compact)
+@btn-height-base: @height-base;
+@btn-height-lg: @height-lg;
+@btn-height-sm: @height-sm;
+
+@btn-padding-horizontal-base: @padding-md;
+@btn-padding-horizontal-lg: @padding-md;
+@btn-padding-horizontal-sm: @padding-xs;
+
+// =============================================================================
+// INPUT CUSTOMIZATION
+// =============================================================================
+
+@input-height-base: @height-base;
+@input-height-lg: @height-lg;
+@input-height-sm: @height-sm;
+
+@input-padding-horizontal: @padding-xs;
+@input-padding-horizontal-base: @padding-xs;
+@input-padding-horizontal-sm: @padding-xs - 1px;
+@input-padding-horizontal-lg: @padding-xs + 3px;
+
+@input-padding-vertical-base: 6px;  // py-1.5 in Noodled
+@input-padding-vertical-sm: 4px;
+@input-padding-vertical-lg: 8px;
+
+@input-placeholder-color: @text-color-secondary;
+@input-color: @text-color;
+@input-icon-color: @disabled-color;
+@input-bg: @component-background;
+
+@input-disabled-color: @disabled-color;
+@input-outline-offset: 0;
+@input-icon-hover-color: @text-color;
+
+// Focus state (green ring)
+@input-hover-border-color: @primary-color;
+@outline-color: @primary-color;
+@outline-blur-size: 0;
+@outline-width: 2px;
+
+// =============================================================================
+// TABLE CUSTOMIZATION
+// =============================================================================
+
+@table-header-bg: @background-color-light;
+@table-header-color: @text-color;
+@table-header-sort-bg: @background-color-base;
+@table-body-sort-bg: rgba(@primary-color, 0.01);
+@table-row-hover-bg: @background-color-light;
+@table-selected-row-color: inherit;
+@table-selected-row-bg: @primary-1;
+@table-body-selected-sort-bg: @table-selected-row-bg;
+@table-selected-row-hover-bg: darken(@table-selected-row-bg, 2%);
+@table-expanded-row-bg: #fbfbfb;
+@table-padding-vertical: 12px;
+@table-padding-horizontal: @padding-md;
+@table-padding-vertical-md: 10px;
+@table-padding-horizontal-md: @padding-xs;
+@table-padding-vertical-sm: 8px;
+@table-padding-horizontal-sm: @padding-xs;
+@table-border-color: @border-color-split;
+@table-border-radius-base: @border-radius-base;
+@table-footer-bg: @background-color-light;
+@table-footer-color: @heading-color;
+@table-header-bg-sm: @table-header-bg;
+@table-font-size: @font-size-base;
+@table-font-size-md: @font-size-base;
+@table-font-size-sm: @font-size-base;
+
+// =============================================================================
+// CARD CUSTOMIZATION
+// =============================================================================
+
+@card-head-color: @heading-color;
+@card-head-background: @component-background;
+@card-head-font-size: @font-size-lg;
+@card-head-font-size-sm: @font-size-base;
+@card-head-padding: @padding-md;
+@card-head-padding-sm: @padding-sm;
+@card-head-height: 48px;
+@card-head-height-sm: 36px;
+@card-inner-head-padding: @padding-sm;
+@card-padding-base: @padding-lg;
+@card-padding-base-sm: @padding-sm;
+@card-actions-background: @background-color-light;
+@card-actions-li-margin: 12px 0;
+@card-skeleton-bg: #cfd8dc;
+@card-background: @component-background;
+@card-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+@card-radius: @border-radius-base;
+@card-head-tabs-margin-bottom: -(@card-head-padding + 1px);
+@card-head-extra-color: @text-color;
+
+// =============================================================================
+// MODAL CUSTOMIZATION
+// =============================================================================
+
+@modal-header-padding-vertical: @padding-md;
+@modal-header-padding-horizontal: @padding-lg;
+@modal-body-padding: @padding-lg;
+@modal-header-bg: @component-background;
+@modal-header-padding: @modal-header-padding-vertical @modal-header-padding-horizontal;
+@modal-header-border-width: @border-width-base;
+@modal-header-border-style: @border-style-base;
+@modal-header-title-line-height: 22px;
+@modal-header-title-font-size: @font-size-lg;
+@modal-header-border-color-split: @border-color-split;
+@modal-header-close-size: 56px;
+@modal-footer-bg: transparent;
+@modal-footer-border-color-split: @border-color-split;
+@modal-footer-border-style: @border-style-base;
+@modal-footer-padding-vertical: 10px;
+@modal-footer-padding-horizontal: 16px;
+@modal-footer-border-width: @border-width-base;
+@modal-mask-bg: fade(#000, 45%);
+@modal-confirm-body-padding: 32px 32px 24px;
+
+// =============================================================================
+// SELECT CUSTOMIZATION
+// =============================================================================
+
+@select-border-color: @input-border-color;
+@select-item-selected-color: @text-color;
+@select-item-selected-font-weight: 600;
+@select-dropdown-bg: @component-background;
+@select-item-selected-bg: @primary-1;
+@select-item-active-bg: @background-color-light;
+@select-dropdown-vertical-padding: @padding-xs;
+@select-dropdown-font-size: @font-size-base;
+@select-dropdown-line-height: 22px;
+@select-dropdown-height: 32px;
+@select-background: @component-background;
+@select-clear-background: @select-background;
+@select-selection-item-bg: @background-color-light;
+@select-selection-item-border-color: @border-color-split;
+@select-single-item-height-lg: 40px;
+@select-multiple-item-height: @input-height-base;
+@select-multiple-item-height-lg: 32px;
+@select-multiple-item-spacing-half: ceil(@padding-xs / 2);
+@select-multiple-disabled-background: @input-disabled-bg;
+@select-multiple-item-disabled-color: #bfbfbf;
+@select-multiple-item-disabled-border-color: @select-border-color;
+
+// =============================================================================
+// CHECKBOX & RADIO CUSTOMIZATION
+// =============================================================================
+
+@checkbox-size: 16px;
+@checkbox-color: @primary-color;
+@checkbox-check-color: #fff;
+@checkbox-check-bg: @checkbox-color;
+@checkbox-border-width: @border-width-base;
+@checkbox-border-radius: @border-radius-base;
+@checkbox-group-item-margin-right: 8px;
+
+@radio-size: 16px;
+@radio-top: 0px;
+@radio-border-width: @border-width-base;
+@radio-dot-size: @radio-size - 8px;
+@radio-dot-color: @primary-color;
+@radio-dot-disabled-color: fade(@black, 20%);
+@radio-solid-checked-color: @component-background;
+
+// =============================================================================
+// BREADCRUMB CUSTOMIZATION
+// =============================================================================
+
+@breadcrumb-base-color: @text-color-secondary;
+@breadcrumb-last-item-color: @text-color;
+@breadcrumb-font-size: @font-size-base;
+@breadcrumb-icon-font-size: @font-size-base;
+@breadcrumb-link-color: @text-color-secondary;
+@breadcrumb-link-color-hover: @primary-color;
+@breadcrumb-separator-color: @text-color-secondary;
+@breadcrumb-separator-margin: 0 @padding-xs;
+
+// =============================================================================
+// BADGE & TAG (Pill) CUSTOMIZATION
+// =============================================================================
+
+@badge-height: 20px;
+@badge-height-sm: 14px;
+@badge-dot-size: 6px;
+@badge-font-size: @font-size-sm;
+@badge-font-size-sm: @font-size-sm;
+@badge-font-weight: 400;
+@badge-status-size: 6px;
+@badge-text-color: @component-background;
+
+@tag-default-bg: @background-color-light;
+@tag-default-color: @text-color;
+@tag-font-size: @font-size-sm;
+@tag-line-height: 20px;
+
+// =============================================================================
+// ALERT CUSTOMIZATION
+// =============================================================================
+
+@alert-success-border-color: lighten(@success-color, 35%);
+@alert-success-bg-color: lighten(@success-color, 45%);
+@alert-success-icon-color: @success-color;
+@alert-info-border-color: lighten(@info-color, 35%);
+@alert-info-bg-color: lighten(@info-color, 45%);
+@alert-info-icon-color: @info-color;
+@alert-warning-border-color: lighten(@warning-color, 35%);
+@alert-warning-bg-color: lighten(@warning-color, 45%);
+@alert-warning-icon-color: @warning-color;
+@alert-error-border-color: lighten(@error-color, 35%);
+@alert-error-bg-color: lighten(@error-color, 45%);
+@alert-error-icon-color: @error-color;
+@alert-message-color: @heading-color;
+@alert-text-color: @text-color;
+@alert-close-color: @text-color-secondary;
+@alert-close-hover-color: @icon-color-hover;
+@alert-padding-vertical: @padding-xs;
+@alert-padding-horizontal: @padding-md;
+@alert-no-icon-padding-vertical: @padding-xs;
+@alert-with-description-no-icon-padding-vertical: @padding-md;
+@alert-with-description-padding-vertical: @padding-md;
+@alert-with-description-padding: @alert-with-description-padding-vertical 15px @alert-with-description-no-icon-padding-vertical @alert-with-description-icon-size;
+@alert-icon-top: 8px + @font-size-base * @line-height-base / 2 - @font-size-base / 2;
+@alert-with-description-icon-size: 24px;
+
+// =============================================================================
+// PAGINATION CUSTOMIZATION
+// =============================================================================
+
+@pagination-item-bg: @component-background;
+@pagination-item-size: @height-base;
+@pagination-item-size-sm: 24px;
+@pagination-font-family: @font-family;
+@pagination-font-weight-active: 600;
+@pagination-item-bg-active: @component-background;
+@pagination-item-link-bg: @component-background;
+@pagination-item-disabled-color-active: @disabled-color;
+@pagination-item-disabled-bg-active: @disabled-bg;
+@pagination-item-input-bg: @component-background;
+@pagination-mini-options-size-changer-top: 0px;
+
+// =============================================================================
+// MENU & DROPDOWN CUSTOMIZATION
+// =============================================================================
+
+@menu-inline-toplevel-item-height: 40px;
+@menu-item-height: 40px;
+@menu-item-group-height: @line-height-base;
+@menu-collapsed-width: 80px;
+@menu-bg: @component-background;
+@menu-popup-bg: @component-background;
+@menu-item-color: @text-color;
+@menu-inline-submenu-bg: @background-color-light;
+@menu-highlight-color: @primary-color;
+@menu-highlight-danger-color: @error-color;
+@menu-item-active-bg: @primary-1;
+@menu-item-active-danger-bg: lighten(@error-color, 45%);
+@menu-item-active-border-width: 3px;
+@menu-item-group-title-color: @text-color-secondary;
+@menu-item-vertical-margin: 4px;
+@menu-item-font-size: @font-size-base;
+@menu-item-boundary-margin: 8px;
+@menu-item-padding-horizontal: 20px;
+@menu-item-padding: 0 @menu-item-padding-horizontal;
+@menu-horizontal-line-height: 46px;
+@menu-icon-margin-right: 10px;
+@menu-icon-size: @font-size-base;
+@menu-icon-size-lg: @font-size-lg;
+@menu-item-group-title-font-size: @menu-item-font-size;
+
+@dropdown-menu-bg: @component-background;
+@dropdown-vertical-padding: @padding-xs;
+@dropdown-edge-child-vertical-padding: 4px;
+@dropdown-font-size: @font-size-base;
+@dropdown-line-height: 22px;
+
+// =============================================================================
+// TOOLTIP & POPOVER CUSTOMIZATION
+// =============================================================================
+
+@tooltip-max-width: 250px;
+@tooltip-color: #fff;
+@tooltip-bg: rgba(0, 0, 0, 0.75);
+@tooltip-arrow-width: 5px;
+@tooltip-distance: @tooltip-arrow-width - 1px + 4px;
+@tooltip-arrow-color: @tooltip-bg;
+@tooltip-border-radius: @border-radius-base;
+
+@popover-bg: @component-background;
+@popover-color: @text-color;
+@popover-min-width: 177px;
+@popover-min-height: 32px;
+@popover-arrow-width: 6px;
+@popover-arrow-color: @popover-bg;
+@popover-arrow-outer-color: @popover-bg;
+@popover-distance: @popover-arrow-width + 4px;
+@popover-padding-horizontal: @padding-md;
+
+// =============================================================================
+// TABS CUSTOMIZATION
+// =============================================================================
+
+@tabs-card-head-background: @background-color-light;
+@tabs-card-height: 40px;
+@tabs-card-active-color: @primary-color;
+@tabs-card-horizontal-padding: (@tabs-card-height - floor(@font-size-base * @line-height-base)) / 2 - @border-width-base @padding-md;
+@tabs-card-horizontal-padding-sm: 6px @padding-md;
+@tabs-card-horizontal-padding-lg: 7px @padding-md 6px;
+@tabs-title-font-size: @font-size-base;
+@tabs-title-font-size-lg: @font-size-lg;
+@tabs-title-font-size-sm: @font-size-base;
+@tabs-ink-bar-color: @primary-color;
+@tabs-bar-margin: 0 0 @margin-md 0;
+@tabs-horizontal-gutter: 32px;
+@tabs-horizontal-margin: 0 0 0 @tabs-horizontal-gutter;
+@tabs-horizontal-margin-rtl: 0 0 0 32px;
+@tabs-horizontal-padding: @padding-sm 0;
+@tabs-horizontal-padding-lg: @padding-md 0;
+@tabs-horizontal-padding-sm: @padding-xs 0;
+@tabs-vertical-padding: @padding-xs @padding-lg;
+@tabs-vertical-margin: 0 0 @margin-md 0;
+@tabs-scrolling-size: 32px;
+@tabs-highlight-color: @primary-color;
+@tabs-hover-color: @primary-5;
+@tabs-active-color: @primary-7;
+@tabs-card-gutter: 2px;
+@tabs-card-tab-active-border-top: 2px solid transparent;
+
+// =============================================================================
+// NOTIFICATION & MESSAGE
+// =============================================================================
+
+@notification-bg: @component-background;
+@notification-padding-vertical: 16px;
+@notification-padding-horizontal: 24px;
+
+@message-notice-content-padding: 10px 16px;
+@message-notice-content-bg: @component-background;
+
+// =============================================================================
+// ANIMATION / MOTION
+// =============================================================================
+
+@animation-duration-slow: 0.3s;
+@animation-duration-base: 0.2s;
+@animation-duration-fast: 0.1s;
+
+@ease-base-out: cubic-bezier(0.7, 0.3, 0.1, 1);
+@ease-base-in: cubic-bezier(0.9, 0, 0.3, 0.7);
+@ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+@ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+@ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+@ease-out-back: cubic-bezier(0.12, 0.4, 0.29, 1.46);
+@ease-in-back: cubic-bezier(0.71, -0.46, 0.88, 0.6);
+@ease-in-out-back: cubic-bezier(0.71, -0.46, 0.29, 1.46);
+@ease-out-circ: cubic-bezier(0.08, 0.82, 0.17, 1);
+@ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+@ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+@ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+@ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+@ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+
+// =============================================================================
+// Z-INDEX SYSTEM
+// =============================================================================
+
+@zindex-badge: auto;
+@zindex-table-fixed: 2;
+@zindex-affix: 10;
+@zindex-back-top: 10;
+@zindex-picker-panel: 10;
+@zindex-popup-close: 10;
+@zindex-modal: 1000;
+@zindex-modal-mask: 1000;
+@zindex-message: 1010;
+@zindex-notification: 1010;
+@zindex-popover: 1030;
+@zindex-dropdown: 1050;
+@zindex-picker: 1050;
+@zindex-popoconfirm: 1060;
+@zindex-tooltip: 1070;
+@zindex-image: 1080;
+
+// =============================================================================
+// ADDITIONAL VARIABLES
+// =============================================================================
+
+@link-color: @primary-color;
+@link-hover-color: @primary-5;
+@link-active-color: @primary-7;
+@link-decoration: none;
+@link-hover-decoration: none;
+@link-focus-decoration: none;
+@link-focus-outline: 0;
+
+@item-active-bg: @primary-1;
+@item-hover-bg: @background-color-light;
+
+@collapse-header-padding: @padding-sm @padding-md;
+@collapse-header-padding-extra: 40px;
+@collapse-header-bg: @background-color-light;
+@collapse-content-padding: @padding-md;
+@collapse-content-bg: @component-background;
+@collapse-header-arrow-left: 16px;
+
+@skeleton-color: rgba(190, 190, 190, 0.2);
+@skeleton-to-color: shade(@skeleton-color, 5%);
+@skeleton-paragraph-margin-top: 28px;
+@skeleton-paragraph-li-margin-top: @margin-md;
+@skeleton-paragraph-li-height: 16px;
+@skeleton-title-height: 16px;
+@skeleton-title-paragraph-margin-top: @margin-lg;
+
+@transfer-header-height: 40px;
+@transfer-item-height: @height-base;
+@transfer-disabled-bg: @disabled-bg;
+@transfer-list-height: 200px;
+@transfer-item-hover-bg: @item-hover-bg;
+@transfer-item-padding-vertical: 6px;
+@transfer-list-search-icon-top: 12px;
+
+// Progress
+@progress-default-color: @processing-color;
+@progress-remaining-color: @background-color-base;
+@progress-info-text-color: @progress-text-color;
+@progress-radius: 100px;
+@progress-steps-item-bg: #f3f3f3;
+@progress-text-font-size: 1em;
+@progress-text-color: @text-color;
+@progress-circle-text-font-size: 1em;
+
+// Steps
+@process-tail-color: @border-color-split;
+@steps-nav-arrow-color: fade(@black, 25%);
+@steps-background: @component-background;
+@steps-icon-size: 32px;
+@steps-icon-custom-size: @steps-icon-size;
+@steps-icon-custom-top: 0px;
+@steps-icon-custom-font-size: 24px;
+@steps-icon-top: -1px;
+@steps-icon-font-size: @font-size-lg;
+@steps-icon-margin: 0 8px 0 0;
+@steps-title-line-height: @height-base;
+@steps-small-icon-size: 24px;
+@steps-small-icon-margin: 0 8px 0 0;
+@steps-dot-size: 8px;
+@steps-dot-top: 2px;
+@steps-current-dot-size: 10px;
+@steps-description-max-width: 140px;
+@steps-nav-content-max-width: auto;
+@steps-vertical-icon-width: 16px;
+@steps-vertical-tail-width: 16px;
+@steps-vertical-tail-width-sm: 12px;
+
+// Divider
+@divider-text-padding: 1em;
+@divider-orientation-margin: 5%;
+@divider-color: rgba(0, 0, 0, 6%);
+@divider-vertical-gutter: 8px;
+
+// Rate
+@rate-star-color: @yellow-6;
+@rate-star-bg: @border-color-split;
+@rate-star-size: 20px;
+@rate-star-hover-scale: scale(1.1);
+
+// Switch
+@switch-height: 22px;
+@switch-sm-height: 16px;
+@switch-min-width: 44px;
+@switch-sm-min-width: 28px;
+@switch-disabled-opacity: 0.4;
+@switch-color: @primary-color;
+@switch-bg: @component-background;
+@switch-shadow-color: fade(#00230b, 20%);
+@switch-padding: 2px;
+@switch-inner-margin-min: ceil(@switch-height * 0.3);
+@switch-inner-margin-max: ceil(@switch-height * 1.1);
+@switch-sm-inner-margin-min: ceil(@switch-sm-height * 0.3);
+@switch-sm-inner-margin-max: ceil(@switch-sm-height * 1.1);
+
+// Slider
+@slider-margin: 10px 6px 10px;
+@slider-rail-background-color: @background-color-base;
+@slider-rail-background-color-hover: #e1e1e1;
+@slider-track-background-color: @primary-3;
+@slider-track-background-color-hover: @primary-4;
+@slider-handle-border-width: 2px;
+@slider-handle-background-color: @component-background;
+@slider-handle-color: @primary-3;
+@slider-handle-color-hover: @primary-4;
+@slider-handle-color-focus: tint(@primary-color, 20%);
+@slider-handle-color-focus-shadow: fade(@primary-color, 12%);
+@slider-handle-color-tooltip-open: @primary-color;
+@slider-handle-size: 14px;
+@slider-handle-margin-top: -5px;
+@slider-handle-shadow: 0;
+@slider-dot-border-color: @border-color-split;
+@slider-dot-border-color-active: tint(@primary-color, 50%);
+@slider-disabled-color: @disabled-color;
+@slider-disabled-background-color: @component-background;
+
+// Tree
+@tree-bg: @component-background;
+@tree-title-height: 24px;
+@tree-child-padding: 18px;
+@tree-directory-selected-color: #fff;
+@tree-directory-selected-bg: @primary-color;
+@tree-node-hover-bg: @item-hover-bg;
+@tree-node-selected-bg: @primary-2;
+
+// Anchor
+@anchor-bg: @component-background;
+@anchor-border-color: @border-color-split;
+@anchor-link-top: 7px;
+@anchor-link-left: 16px;
+@anchor-link-padding: @anchor-link-top 0 @anchor-link-top @anchor-link-left;
+
+// Timeline
+@timeline-width: 2px;
+@timeline-color: @border-color-split;
+@timeline-dot-border-width: 2px;
+@timeline-dot-color: @primary-color;
+@timeline-dot-bg: @component-background;
+@timeline-item-padding-bottom: 20px;
+
+// Avatar
+@avatar-size-base: 32px;
+@avatar-size-lg: 40px;
+@avatar-size-sm: 24px;
+@avatar-font-size-base: 18px;
+@avatar-font-size-lg: 24px;
+@avatar-font-size-sm: 14px;
+@avatar-bg: #ccc;
+@avatar-color: #fff;
+@avatar-border-radius: @border-radius-base;
+@avatar-group-overlapping: -8px;
+@avatar-group-space: 3px;
+@avatar-group-border-color: #fff;
+
+// Processing color (used in progress, loading, etc.)
+@processing-color: @primary-color;
+
+// Mention
+@mention-dropdown-bg: @component-background;
+@mention-dropdown-menu-item-hover-bg: @mention-dropdown-bg;
+
+// Descriptions
+@descriptions-bg: #fafafa;
+@descriptions-title-margin-bottom: 20px;
+@descriptions-default-padding: @padding-md @padding-lg;
+@descriptions-middle-padding: @padding-sm @padding-lg;
+@descriptions-small-padding: @padding-xs @padding-md;
+@descriptions-item-padding-bottom: @padding-md;
+@descriptions-item-trailing-colon: true;
+@descriptions-item-label-colon-margin-right: 8px;
+@descriptions-item-label-colon-margin-left: 2px;
+@descriptions-extra-color: @text-color;
+
+// Result
+@result-title-font-size: 24px;
+@result-subtitle-font-size: @font-size-base;
+@result-icon-font-size: 72px;
+@result-extra-margin: 24px 0 0 0;
+
+// Image
+@image-size-base: 48px;
+@image-font-size-base: 24px;
+@image-bg: #f5f5f5;
+@image-color: #fff;
+@image-mask-font-size: 16px;
+@image-preview-operation-size: 18px;
+@image-preview-operation-color: @text-color-dark;
+@image-preview-operation-disabled-color: fade(@image-preview-operation-color, 25%);

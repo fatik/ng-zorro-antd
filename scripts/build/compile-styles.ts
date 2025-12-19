@@ -87,6 +87,10 @@ export async function compile(): Promise<void | void[]> {
   await writeFile(`${targetPath}/ng-zorro-antd.dark.less`, await readFile(`${sourcePath}/ng-zorro-antd.dark.less`));
   await writeFile(`${targetPath}/ng-zorro-antd.aliyun.less`, await readFile(`${sourcePath}/ng-zorro-antd.aliyun.less`));
   await writeFile(
+    `${targetPath}/ng-zorro-antd.serviceant.less`,
+    await readFile(`${sourcePath}/ng-zorro-antd.serviceant.less`)
+  );
+  await writeFile(
     `${targetPath}/ng-zorro-antd.compact.less`,
     await readFile(`${sourcePath}/ng-zorro-antd.compact.less`)
   );
@@ -116,7 +120,12 @@ export async function compile(): Promise<void | void[]> {
   promiseList.push(compileLess(aliyunLessContent, path.join(targetPath, 'ng-zorro-antd.aliyun.css'), false));
   promiseList.push(compileLess(aliyunLessContent, path.join(targetPath, 'ng-zorro-antd.aliyun.min.css'), true));
 
-  // Compile the aliyun theme less file to CSS file.
+  // Compile the serviceant theme less file to CSS file.
+  const serviceantLessContent = `@import "${path.posix.join(targetPath, 'ng-zorro-antd.serviceant.less')}";`;
+  promiseList.push(compileLess(serviceantLessContent, path.join(targetPath, 'ng-zorro-antd.serviceant.css'), false));
+  promiseList.push(compileLess(serviceantLessContent, path.join(targetPath, 'ng-zorro-antd.serviceant.min.css'), true));
+
+  // Compile the variable theme less file to CSS file.
   const variableLessContent = `@import "${path.posix.join(targetPath, 'ng-zorro-antd.variable.less')}";`;
   promiseList.push(compileLess(variableLessContent, path.join(targetPath, 'ng-zorro-antd.variable.css'), false));
   promiseList.push(compileLess(variableLessContent, path.join(targetPath, 'ng-zorro-antd.variable.min.css'), true));
